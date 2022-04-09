@@ -6,6 +6,8 @@ import { useBudgets } from "./contexts/BudgetsContext";
 import AddBudgetModal from "./components/modals/AddBudgetModal";
 import AddExpenseModal from "./components/modals/AddExpenseModal";
 import { useState } from "react";
+import UncategorizedBudgetCard from "./components/budget_card/UncategorizedBudgetCard";
+import TotalBudgetCard from "./components/budget_card/TotalBudgetCard";
 
 function App() {
   const { budgets, getBudgetExpenses } = useBudgets();
@@ -40,6 +42,8 @@ function App() {
               />
             );
           })}
+          <UncategorizedBudgetCard addExpenseCallBack={openAddExpenseModal} />
+          <TotalBudgetCard />
         </div>
       </Container>
       <>

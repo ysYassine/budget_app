@@ -2,8 +2,15 @@ import "./BudgetCard.css";
 import { currencyFormatter } from "./../../utils/utils";
 import ProgressBar from "./../../../node_modules/react-bootstrap/esm/ProgressBar";
 import { Button } from "react-bootstrap";
+import SharedValues from "./../../shared/SharedValues";
 
-export default function BudgetCard({ name, amount, max, addExpenseCallBack }) {
+export default function BudgetCard({
+  name,
+  amount,
+  max,
+  addExpenseCallBack,
+  hideButtons = false,
+}) {
   const ratio = amount / max;
   function getProgressBarVarient(amount, max) {
     const ratio = amount / max;
@@ -14,15 +21,22 @@ export default function BudgetCard({ name, amount, max, addExpenseCallBack }) {
   return (
     <div
       className={
-        "budget-card" + (ratio > 1 ? " budget-card-expenses__overflow" : "")
+        "budget-card" +
+        (ratio > 1 ? " budget-card-expenses__overflow" : "") +
+        (name === SharedValues.UNCATEGORIZED
+          ? " budget-card-expenses__uncategorized"
+          : "") +
+        (name === SharedValues.TOTAL ? " budget-card-expenses__total" : "")
       }
     >
       <div className="budget-card__header">
         <div className="card-name">{name}</div>
         <div className="amount">{currencyFormatter.format(amount)}&nbsp;</div>
-        <div className="max">{" / " + currencyFormatter.format(max)}</div>
+        {max && (
+          <div className="max">{" / " + currencyFormatter.format(max)}</div>
+        )}
       </div>
-      {
+      {max && (
         <ProgressBar
           className="rounded-pill"
           variant={getProgressBarVarient(amount, max)}
@@ -30,13 +44,15 @@ export default function BudgetCard({ name, amount, max, addExpenseCallBack }) {
           max={max}
           now={amount}
         ></ProgressBar>
-      }
-      <div className="card-buttons">
-        <Button variant="outline-primary" onClick={addExpenseCallBack}>
-          Add Expense
-        </Button>
-        <Button variant="outline-secondary">View Expenses</Button>
-      </div>
+      )}
+      {!hideButtons && (
+        <div className="card-buttons">
+          <Button variant="outline-primary" onClick={addExpenseCallBack}>
+            Add Expense
+          </Button>
+          <Button variant="outline-secondary">View Expenses</Button>
+        </div>
+      )}
     </div>
   );
 }
