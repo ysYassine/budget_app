@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.budget-card.budget-card__overflow {
+.budget-card.budget-card-expenses__overflow {
   background-color: hsla(0, 100%, 50%, 0.05);
   border: 1px solid hsla(0, 100%, 50%, 0.489);
 }
