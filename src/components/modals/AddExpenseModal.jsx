@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { useRef } from "react";
 import { useBudgets } from "../../contexts/BudgetsContext";
-import { UNCATEGORIZED_BUDGET_ID } from "./../../contexts/BudgetsContext";
+import SharedValues from "./../../shared/SharedValues";
 
 export default function AddExpenseModal({
   show,
@@ -51,10 +51,10 @@ export default function AddExpenseModal({
             <Form.Label>Budget</Form.Label>
             <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
               <option
-                key={UNCATEGORIZED_BUDGET_ID}
-                value={UNCATEGORIZED_BUDGET_ID}
+                key={SharedValues.UNCATEGORIZED_BUDGET_ID}
+                value={SharedValues.UNCATEGORIZED_BUDGET_ID}
               >
-                {UNCATEGORIZED_BUDGET_ID}
+                {SharedValues.UNCATEGORIZED_BUDGET_ID}
               </option>
               {budgets.map((budget) => (
                 <option key={budget.id} value={budget.id}>

@@ -2,13 +2,14 @@ import "./App.css";
 import Container from "react-bootstrap/esm/Container";
 import Header from "./components/header/Header";
 import BudgetCard from "./components/budget_card/BudgetCard";
-import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext";
+import { useBudgets } from "./contexts/BudgetsContext";
 import AddBudgetModal from "./components/modals/AddBudgetModal";
 import AddExpenseModal from "./components/modals/AddExpenseModal";
 import { useState } from "react";
 import UncategorizedBudgetCard from "./components/budget_card/UncategorizedBudgetCard";
 import TotalBudgetCard from "./components/budget_card/TotalBudgetCard";
 import ViewExpensesModal from "./components/modals/ViewExpensesModal";
+import SharedValues from "./shared/SharedValues";
 
 function App() {
   const { budgets, getBudgetExpenses } = useBudgets();
@@ -48,7 +49,7 @@ function App() {
           <UncategorizedBudgetCard
             addExpenseCallBack={openAddExpenseModal}
             viewExpensesCallBack={() =>
-              setViewExpenses(UNCATEGORIZED_BUDGET_ID)
+              setViewExpenses(SharedValues.UNCATEGORIZED_BUDGET_ID)
             }
           />
           <TotalBudgetCard />

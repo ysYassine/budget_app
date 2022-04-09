@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { v4 as uuid } from "uuid";
 import useLocalStorage from "./../Hooks/useLocalStorage";
-
-export const UNCATEGORIZED_BUDGET_ID = "Uncategorized";
+import SharedValues from "./../shared/SharedValues";
 
 const BudgetsContext = React.createContext();
 
@@ -30,7 +29,7 @@ export default function BudgetsProvider({ children }) {
     setExpenses((prevExpenses) =>
       prevExpenses.map((expense) => {
         if (expense.budgetId !== id) return expense;
-        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+        return { ...expense, budgetId: SharedValues.UNCATEGORIZED_BUDGET_ID };
       })
     );
     setBudgets((prevBudgets) =>
