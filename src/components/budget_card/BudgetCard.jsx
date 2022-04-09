@@ -9,6 +9,7 @@ export default function BudgetCard({
   amount,
   max,
   addExpenseCallBack,
+  viewExpensesCallBack,
   hideButtons = false,
 }) {
   const ratio = amount / max;
@@ -32,7 +33,7 @@ export default function BudgetCard({
       <div className="budget-card__header">
         <div className="card-name">{name}</div>
         <div className="amount">{currencyFormatter.format(amount)}&nbsp;</div>
-        {max && (
+        {max !== 0 && name !== SharedValues.UNCATEGORIZED && (
           <div className="max">{" / " + currencyFormatter.format(max)}</div>
         )}
       </div>
@@ -50,7 +51,9 @@ export default function BudgetCard({
           <Button variant="outline-primary" onClick={addExpenseCallBack}>
             Add Expense
           </Button>
-          <Button variant="outline-secondary">View Expenses</Button>
+          <Button variant="outline-secondary" onClick={viewExpensesCallBack}>
+            View Expenses
+          </Button>
         </div>
       )}
     </div>

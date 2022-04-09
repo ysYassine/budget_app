@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+check Modal
+
+kif bech nesta3mel context variable lezem el component elli bech nedi mennou el context ikoun déja child mte3 component fih el provider mte3 el context
+
+nefhem el destruct
+
+components names must start with UPPERCASE
