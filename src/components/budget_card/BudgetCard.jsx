@@ -3,7 +3,7 @@ import { currencyFormatter } from "./../../utils/utils";
 import ProgressBar from "./../../../node_modules/react-bootstrap/esm/ProgressBar";
 import { Button } from "react-bootstrap";
 
-export default function BudgetCard({ name, amount, max }) {
+export default function BudgetCard({ name, amount, max, addExpenseCallBack }) {
   const ratio = amount / max;
   function getProgressBarVarient(amount, max) {
     const ratio = amount / max;
@@ -32,7 +32,9 @@ export default function BudgetCard({ name, amount, max }) {
         ></ProgressBar>
       }
       <div className="card-buttons">
-        <Button variant="outline-primary">Add Expense</Button>
+        <Button variant="outline-primary" onClick={addExpenseCallBack}>
+          Add Expense
+        </Button>
         <Button variant="outline-secondary">View Expenses</Button>
       </div>
     </div>
